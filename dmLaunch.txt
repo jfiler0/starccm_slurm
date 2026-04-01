@@ -16,8 +16,6 @@ echo "Found dmrunfile: $DMRUNFILE"
 EXECOPTS=$(cat dm_design_execute_options.txt)
 echo "Execute options: $EXECOPTS"
 
-# Theoretically, -dmnoshare should share the license. Does not seem to do that
-
-$STARCCMP -bs slurm -dmnoshare -np $SLURM_NTASKS -rsh /usr/bin/ssh $EXECOPTS
+$STARCCMP -bs slurm -np $SLURM_NTASKS -rsh /usr/bin/ssh $EXECOPTS
 
 echo "Job script complete."
