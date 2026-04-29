@@ -12,7 +12,8 @@ echo "Batch information | Job ID: $SLURM_JOBID | Nodes: $SLURUM_NNODES | Tasks: 
 STAR_PATH=/apps/common/software/STAR-CCM+/18.02.008-R8/STAR-CCM+18.02.008-R8/star/bin/
 SIM_PATH=/projects/ng_inletcfd/Training/rocket_example.sim
 
-$STAR_PATH/starccm+ -batch mesh,run $SIM_PATH -batchsystem slurm
+# -np $SLURM_NTASKS at the end is important to make sure it actually runs in parallel
+$STAR_PATH/starccm+ -batch mesh,run $SIM_PATH -batchsystem slurm -np $SLURM_NTASKS
 
 module reset
 
